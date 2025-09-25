@@ -14,15 +14,12 @@ Node* head = NULL;
 Node* tail = NULL;
 Node* current = NULL;
 
-// Create a new node
 Node* createNode(const char* url) {
     Node* newNode = (Node*)malloc(sizeof(Node));
     strcpy(newNode->url, url);
     newNode->prev = newNode->next = NULL;
     return newNode;
 }
-
-// Visit a new website
 void visitWebsite(const char* url) {
     Node* newNode = createNode(url);
     if (head == NULL) {
@@ -36,7 +33,6 @@ void visitWebsite(const char* url) {
     printf("Visited: %s\n", url);
 }
 
-// Delete a website by URL
 void deleteWebsite(const char* url) {
     Node* temp = head;
     while (temp) {
@@ -55,7 +51,6 @@ void deleteWebsite(const char* url) {
     printf("URL not found.\n");
 }
 
-// Display all history
 void displayHistory() {
     Node* temp = head;
     printf("Browser History:\n");
@@ -65,7 +60,6 @@ void displayHistory() {
     }
 }
 
-// Navigate forward
 void navigateForward() {
     if (current && current->next) {
         current = current->next;
@@ -75,7 +69,6 @@ void navigateForward() {
     }
 }
 
-// Navigate backward
 void navigateBackward() {
     if (current && current->prev) {
         current = current->prev;
@@ -85,7 +78,6 @@ void navigateBackward() {
     }
 }
 
-// Clear entire history
 void clearHistory() {
     Node* temp = head;
     while (temp) {
@@ -97,7 +89,6 @@ void clearHistory() {
     printf("History cleared.\n");
 }
 
-// Linear search for a website
 void searchWebsite(const char* url) {
     Node* temp = head;
     int pos = 1;
@@ -112,7 +103,6 @@ void searchWebsite(const char* url) {
     printf("Website not found.\n");
 }
 
-// Bubble sort history alphabetically
 void sortHistory() {
     if (!head) return;
     int swapped;
@@ -136,7 +126,6 @@ void sortHistory() {
     printf("History sorted alphabetically.\n");
 }
 
-// Main menu
 int main() {
     int choice;
     char url[URL_SIZE];
@@ -197,4 +186,5 @@ int main() {
         }
     }
     return 0;
+
 }
